@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0vQyKiLXdwN29fc5WNnooq+SC0SOxxBoTymODTw6mPKnlvP2LDwTpGh3fRdF+hfkmqVUCr5eYe/8PE5cuPYg3Q==",
+  "dgSpecHash": "KuE3G85pjPw/UwKZG3DB3wY3HM3SlMOaXoxbLwAaKZcNT7xZiZenbqCz/EdXEUudIzVM3rz5DSAjuKbAs5yLxQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
+  "projectFilePath": "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\vendrops4\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\vendrops4\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\vendrops4\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\vendrops4\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

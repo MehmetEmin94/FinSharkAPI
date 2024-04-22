@@ -1,4 +1,7 @@
+using System.Reflection;
 using FinSharkAPI.Data;
+using FinSharkAPI.IRepositories;
+using FinSharkAPI.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(opt=>{
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IStockRepository,StockRepository>();
 
 var app = builder.Build();
 
