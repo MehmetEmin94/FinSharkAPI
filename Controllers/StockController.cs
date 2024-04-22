@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using FinSharkAPI.Data;
 using FinSharkAPI.Dtos.Stock;
 using FinSharkAPI.IRepositories;
 using FinSharkAPI.Mappers;
+using FinSharkAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FinSharkAPI.Controllers
 {
@@ -29,7 +24,7 @@ namespace FinSharkAPI.Controllers
         {
             var stockModel = stockDto.ToStockFromCreateStockRequestDto();
             stockModel=await _stockRepo.CreateAsync(stockModel);
-            return CreatedAtAction(nameof(GetSingleStock),new { id=stockModel.Id},_mapper.Map<StockDto>(stockModel));
+            return CreatedAtAction(nameof(GetById),new { id=stockModel.Id},_mapper.Map<StockDto>(stockModel));
         }
 
         [HttpPut]
@@ -57,15 +52,15 @@ namespace FinSharkAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetStocks()
+        public async Task<IActionResult> GetAll()
         {
             var stocks=await _stockRepo.GetAllAsync();
-            var stockDto=stocks.Select(s => _mapper.Map<StockDto>(s));
+            var stockDto=_mapper.Map<List<Stock>>(stocks);
             return Ok(stockDto);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSingleStock([FromRoute] int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var stock =await _stockRepo.GetByIdAsync(id);
             if(stock is null)

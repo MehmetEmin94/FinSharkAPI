@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FinSharkAPI.Dtos.Comment;
 
 namespace FinSharkAPI.Dtos.Stock
 {
@@ -13,6 +10,7 @@ namespace FinSharkAPI.Dtos.Stock
         public decimal Purchase { get; set; }
         public decimal LastDiv { get; set; }
         public string Industry { get; set; } = string.Empty;
-        public long MarketCap { get; set; } = new();
+        public long MarketCap { get; set; } 
+        public List<CommentDto> Comments { get; set; } 
     }
 }

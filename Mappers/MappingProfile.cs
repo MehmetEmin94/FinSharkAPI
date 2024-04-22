@@ -1,20 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
+using FinSharkAPI.Dtos.Comment;
 using FinSharkAPI.Dtos.Stock;
 using FinSharkAPI.Models;
 
 namespace FinSharkAPI.Mappers
 {
-    public class AMapper:Profile
+    public class MappingProfile:Profile
     {
-        public AMapper()
+        public MappingProfile()
         {
             CreateMap<Stock,StockDto>();
             CreateMap<CreateStockRequestDto,Stock>();
             CreateMap<UpdateStockRequestDto,Stock>();
+
+            CreateMap<Comment,CommentDto>();
         }
     }
 }
