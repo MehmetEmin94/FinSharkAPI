@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj": {}
+    "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj": {}
   },
   "projects": {
-    "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj": {
+    "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
+        "projectUniqueName": "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
         "projectName": "FinSharkAPI",
-        "projectPath": "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
+        "projectPath": "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
         "packagesPath": "C:\\Users\\vendrops4\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\obj\\",
+        "outputPath": "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vendrops4\\AppData\\Roaming\\NuGet\\NuGet.Config",
