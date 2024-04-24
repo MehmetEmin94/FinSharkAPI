@@ -10,10 +10,14 @@ namespace FinSharkAPI.Mappers
         public MappingProfile()
         {
             CreateMap<Stock,StockDto>();
-            CreateMap<CreateStockRequestDto,Stock>();
+            CreateMap<Stock,Stock>();
+            CreateMap<CreateStockDto,Stock>();
             CreateMap<UpdateStockRequestDto,Stock>();
 
             CreateMap<Comment,CommentDto>();
+            CreateMap<Comment,Comment>();
+            CreateMap<CreateCommentDto,Comment>();
+            CreateMap<UpdateCommentRequestDto,Comment>();
         }
     }
 }

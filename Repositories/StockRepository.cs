@@ -1,6 +1,7 @@
 using AutoMapper;
 using FinSharkAPI.Data;
 using FinSharkAPI.Dtos.Stock;
+using FinSharkAPI.Helpers;
 using FinSharkAPI.IRepositories;
 using FinSharkAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -37,9 +38,20 @@ namespace FinSharkAPI.Repositories
             return stock;
         }
 
-        public async Task<List<Stock>> GetAllAsync()
+        public async Task<List<Stock>> GetAllAsync(QueryObject query)
         {
-            return await _dbContext.Stocks.Include(s=>s.Comments).ToListAsync();
+            var stocks =  _dbContext.Stocks.Include(s=>s.Comments).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(query.CompanyName))
+            {
+                stocks = stocks.Where(s => s.CompanyName.Contains(query.CompanyName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.Symbol))
+            {
+                stocks = stocks.Where(s => s.Symbol.Contains(query.Symbol));
+            }
+            return await stocks.ToListAsync();
         }
 
         public async Task<Stock?> GetByIdAsync(int id)
@@ -47,14 +59,25 @@ namespace FinSharkAPI.Repositories
            return await _dbContext.Stocks.Include(s=>s.Comments).FirstOrDefaultAsync(s=>s.Id==id);
         }
 
-        public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto stockDto)
+        public async Task<bool> StockExist(int id)
+        {
+            return await _dbContext.Stocks.AnyAsync(s=>s.Id==id);
+        }
+
+        public async Task<Stock?> UpdateAsync(int id, Stock stock)
         {
             var existingStock =await _dbContext.Stocks.FirstOrDefaultAsync(s=>s.Id==id);
             if(existingStock is null)
             {
                 return null;
             }
-           _mapper.Map(stockDto,existingStock);
+            existingStock.CompanyName=stock.CompanyName;
+            existingStock.Industry=stock.Industry;
+            existingStock.LastDiv=stock.LastDiv;
+            existingStock.MarketCap=stock.MarketCap;
+            existingStock.Purchase=stock.Purchase;
+            existingStock.Symbol=stock.Symbol;
+
             await _dbContext.SaveChangesAsync();
             return existingStock;
         }

@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FinSharkAPI.Dtos.Stock
 {
-    public class UpdateStockRequestDto
+    public class CreateStockDto
     {
         [Required]
         [MaxLength(10, ErrorMessage = "Symbol cannot be over 10 characters")]
         public string Symbol { get; set; } = string.Empty;
-         [Required]
+        [Required]
         [MaxLength(10, ErrorMessage = "CompanyName cannot be over 10 characters")]
         public string CompanyName { get; set; } = string.Empty;
         [Required]

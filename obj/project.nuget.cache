@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9IHSE8Dmh5cS9t5aG0W0A3WunE6C+tkx41zAdv/TUpRa3cZe9VS45MGvROwNIKtV8oiTTi+wSPUAwVZ0Jg+gVw==",
+  "dgSpecHash": "WcLzNV3KNXehVQYtDXZMvsuaqj8TmBescG3CjRM/PpemT5idI1FdiL14WP2wwx4JyPpIwjtc6cJefaO9DXxkKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
+  "projectFilePath": "c:\\Users\\vendrops4\\Desktop\\Career Boost Projects\\FinanceProject\\FinShark\\FinSharkAPI\\FinSharkAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vendrops4\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\vendrops4\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

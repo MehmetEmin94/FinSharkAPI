@@ -18,7 +18,7 @@ namespace FinSharkAPI.Mappers
          };   
         }
 
-        public static Stock ToStockFromCreateStockRequestDto(this CreateStockRequestDto stockDto)
+        public static Stock ToStockFromCreateStockRequestDto(this CreateStockDto stockDto)
         {
             return new Stock{
                 Symbol = stockDto.Symbol,
