@@ -1,8 +1,10 @@
 using System.Reflection;
 using FinSharkAPI.Data;
 using FinSharkAPI.IRepositories;
+using FinSharkAPI.IServices;
 using FinSharkAPI.Models;
 using FinSharkAPI.Repositories;
+using FinSharkAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -57,6 +59,7 @@ builder.Services.AddAuthentication(options => {
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IStockRepository,StockRepository>();
 builder.Services.AddScoped<ICommentRepository,CommentRepository>();
+builder.Services.AddScoped<ITokenService,TokenService>();
 
 var app = builder.Build();
 
