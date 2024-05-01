@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinSharkAPI.Models
 {
+    [Table("Stocks")]
     public class Stock
     {
         public int Id { get; set; }
@@ -14,5 +15,6 @@ namespace FinSharkAPI.Models
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; } = new();
         public List<Comment> Comments { get; set; } = new();
+        public List<Portfolio> Portfolios { get; set; } = new ();
     }
 }
