@@ -1,7 +1,9 @@
 using AutoMapper;
 using FinSharkAPI.Dtos.Comment;
+using FinSharkAPI.Extensions;
 using FinSharkAPI.IRepositories;
 using FinSharkAPI.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinSharkAPI.Controllers
@@ -12,13 +14,16 @@ namespace FinSharkAPI.Controllers
     {
         private readonly ICommentRepository _commentRepository;
         private readonly IStockRepository _stockRepository;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
 
-        public CommentController(ICommentRepository commentRepository, IMapper mapper, IStockRepository stockRepository)
+        public CommentController(ICommentRepository commentRepository, IMapper mapper, 
+                                 IStockRepository stockRepository, UserManager<AppUser> userManager)
         {
             _commentRepository = commentRepository;
             _mapper = mapper;
             _stockRepository = stockRepository;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -55,11 +60,17 @@ namespace FinSharkAPI.Controllers
 
             var isStockExist=await _stockRepository.StockExist(stockId);
             
-            if (isStockExist!)
+            if (!isStockExist)
             {
                 return BadRequest("Stock does not exist!");
             }
+
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            
             var comment=_mapper.Map<Comment>(commentDto);
+            comment.StockId=stockId;
+            comment.AppUserId=appUser.Id;
             comment=await _commentRepository.CreateAsync(comment);
             return CreatedAtAction(nameof(GetById),new { id=comment.Id},_mapper.Map<CommentDto>(comment));
         }

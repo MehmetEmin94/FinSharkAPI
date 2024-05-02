@@ -40,7 +40,7 @@ namespace FinSharkAPI.Repositories
 
         public async Task<List<Stock>> GetAllAsync(QueryObject query)
         {
-            var stocks =  _dbContext.Stocks.Include(s=>s.Comments).AsQueryable();
+            var stocks =  _dbContext.Stocks.Include(s=>s.Comments).ThenInclude(a=>a.AppUser).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(query.CompanyName))
             {
@@ -65,7 +65,7 @@ namespace FinSharkAPI.Repositories
 
         public async Task<Stock?> GetByIdAsync(int id)
         {
-           return await _dbContext.Stocks.Include(s=>s.Comments).FirstOrDefaultAsync(s=>s.Id==id);
+           return await _dbContext.Stocks.Include(s=>s.Comments).ThenInclude(a=>a.AppUser).FirstOrDefaultAsync(s=>s.Id==id);
         }
 
         public async Task<Stock?> GetBySymbolAsync(string symbol)

@@ -68,7 +68,7 @@ namespace FinSharkAPI.Controllers
                 return BadRequest(ModelState);
 
             var stocks=await _stockRepo.GetAllAsync(query);
-            var stockDto=_mapper.Map<List<Stock>>(stocks);
+            var stockDto=_mapper.Map<List<StockDto>>(stocks);
             return Ok(stockDto);
         }
 
