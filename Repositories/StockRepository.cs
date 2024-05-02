@@ -68,6 +68,11 @@ namespace FinSharkAPI.Repositories
            return await _dbContext.Stocks.Include(s=>s.Comments).FirstOrDefaultAsync(s=>s.Id==id);
         }
 
+        public async Task<Stock?> GetBySymbolAsync(string symbol)
+        {
+            return await _dbContext.Stocks.Include(s=>s.Comments).FirstOrDefaultAsync(s=>s.Symbol==symbol);
+        }
+
         public async Task<bool> StockExist(int id)
         {
             return await _dbContext.Stocks.AnyAsync(s=>s.Id==id);

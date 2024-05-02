@@ -8,6 +8,7 @@ namespace FinSharkAPI.IRepositories
     {
         Task<List<Stock>> GetAllAsync(QueryObject query);
         Task<Stock?> GetByIdAsync(int id);
+        Task<Stock?> GetBySymbolAsync(string symbol);
         Task<Stock?> DeleteAsync(int id);
         Task<Stock?> UpdateAsync(int id,Stock stock);
         Task<Stock> CreateAsync(Stock stockModel);
