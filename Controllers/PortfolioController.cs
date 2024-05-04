@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FinSharkAPI.Extensions;
 using FinSharkAPI.IRepositories;
+using FinSharkAPI.IServices;
 using FinSharkAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -18,12 +19,15 @@ namespace FinSharkAPI.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IStockRepository _stockRepository;
         private readonly IPortfolioRepository _portfolioRepository;
+        private readonly IFMPService _fmpService;
 
-        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepository, IPortfolioRepository portfolioRepository)
+        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepository, 
+                                   IPortfolioRepository portfolioRepository, IFMPService fmpService)
         {
             _userManager = userManager;
             _stockRepository = stockRepository;
             _portfolioRepository = portfolioRepository;
+            _fmpService = fmpService;
         }
 
         [HttpGet]
@@ -44,6 +48,19 @@ namespace FinSharkAPI.Controllers
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
             var stock =  await _stockRepository.GetBySymbolAsync(symbol);
+            
+            if (stock is null)
+            {
+                stock = await _fmpService.FindStockBySymbolAsync(symbol);
+                if (stock is null)
+                {
+                    return BadRequest("Stock does not exist");
+                }
+                else
+                {
+                    await _stockRepository.CreateAsync(stock);
+                }
+            }
 
             if (stock is null)
                 return BadRequest("Stock not found");

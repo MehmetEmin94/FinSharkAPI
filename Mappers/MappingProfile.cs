@@ -10,6 +10,13 @@ namespace FinSharkAPI.Mappers
         public MappingProfile()
         {
             CreateMap<Stock,StockDto>();
+            CreateMap<FMPStock,Stock>()
+               .ForMember(a=>a.Symbol,opt=>opt.MapFrom(src=>src.symbol))
+               .ForMember(a=>a.CompanyName,opt=>opt.MapFrom(src=>src.companyName))
+               .ForMember(a=>a.Purchase,opt=>opt.MapFrom(src=>(decimal)src.price))
+               .ForMember(a=>a.LastDiv,opt=>opt.MapFrom(src=>(decimal)src.lastDiv))
+               .ForMember(a=>a.Industry,opt=>opt.MapFrom(src=>src.industry))
+               .ForMember(a=>a.MarketCap,opt=>opt.MapFrom(src=>src.mktCap));
             CreateMap<Stock,Stock>();
             CreateMap<CreateStockDto,Stock>();
             CreateMap<UpdateStockRequestDto,Stock>();
