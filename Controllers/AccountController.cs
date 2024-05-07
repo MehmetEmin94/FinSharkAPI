@@ -63,7 +63,7 @@ namespace FinSharkAPI.Controllers
                 var appUser = new AppUser
                 {
                     UserName = registerDto.UserName,
-                    Email = registerDto.EmailAddress
+                    Email = registerDto.Email
                 };
 
                 var createdUser = await _userManager.CreateAsync(appUser,registerDto.Password);
